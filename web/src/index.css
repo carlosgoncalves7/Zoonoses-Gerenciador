@@ -1,1 +1,47 @@
 @import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+@theme {
+    --font-sans: 'Manrope', system-ui, -apple-system, sans-serif;
+    /* Isso remove todas as cores padrão do tailwind v4 */
+    --color-*: initial;
+    /* Paleta de cores personalizadas pro sistema */
+    --color-orange-50: #fff4e5;
+    --color-orange-100: #ffeacc;
+    --color-orange-200: #ffd499;
+    --color-orange-300: #ffbf66;
+    --color-orange-400: #ffa933;
+    --color-orange-500: #ff9400;
+    --color-orange-600: #cc7600;
+    --color-orange-700: #995900;
+    --color-orange-800: #663b00;
+    --color-orange-900: #331e00;
+    --color-orange-950: #1a0f00;
+
+
+
+    --color-blue-50: #E5FBFF;
+    --color-blue-100: #CCF7FF;
+    --color-blue-200: #99EFFF;
+    --color-blue-300: #66E7FF;
+    --color-blue-400: #33DFFF;
+    --color-blue-500: #00D7FF;
+    --color-blue-600: #00ACCC;
+    --color-blue-700: #008199;
+    --color-blue-800: #005666;
+    --color-blue-900: #002B33;
+    --color-blue-950: #00161A;
+
+    --color-gray-50: oklch(0.984 0.003 247.858);
+    --color-gray-100: oklch(0.968 0.007 247.896);
+    --color-gray-200: oklch(0.929 0.013 255.508);
+    --color-gray-300: oklch(0.869 0.022 252.894);
+    --color-gray-400: oklch(0.704 0.04 256.788);
+    --color-gray-500: oklch(0.554 0.046 257.417);
+    --color-gray-600: oklch(0.446 0.043 257.281);
+    --color-gray-700: oklch(0.372 0.044 257.287);
+    --color-gray-800: oklch(0.279 0.041 260.031);
+    --color-gray-900: oklch(0.208 0.042 265.755);
+    --color-gray-950: oklch(0.129 0.042 264.695);
+}
