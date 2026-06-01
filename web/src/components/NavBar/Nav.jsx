@@ -9,10 +9,10 @@ export default function Nav() {
             <Link href="/home">
                 Dashboard
             </Link>
-            <Link href="caes-register" svg={<Dog />}>
+            <Link href="caes" svg={<Dog />}>
                 Registro de Cães
             </Link>
-            <Link href="cat-register" svg={<Cat />}>
+            <Link href="gatos" svg={<Cat />}>
                 Registro de Gatos
             </Link>
             <Link href="cadastro" svg={<Book />}>
@@ -21,7 +21,7 @@ export default function Nav() {
             <Link href="castrados" svg={<CheckSquare />}>
                 Castrados
             </Link>
-            <Link href="fila-de-espera" svg={<Hourglass />}>
+            <Link href="filaespera" svg={<Hourglass />}>
                 Espera
             </Link>
             <Link href="/" svg={<SignOut />}>
