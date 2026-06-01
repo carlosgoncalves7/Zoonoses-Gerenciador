@@ -43,8 +43,9 @@ FROM animais a
 	INNER JOIN tutores t
 	ON a.id_tutor = t.id_tutor
 	INNER JOIN funcionarios f
-	ON a.id_funcionario_cadastro = f.id_funcionario";
-// $sql = "SELECT * FROM animal";
+	ON a.id_funcionario_cadastro = f.id_funcionario
+    where especie = 'Cachorro'";
+
 
 $cmd = $conexao->prepare($sql);
 $cmd->execute();
