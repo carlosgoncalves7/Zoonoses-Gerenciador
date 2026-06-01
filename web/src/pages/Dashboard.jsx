@@ -22,24 +22,66 @@ export default function Dashboard() {
 
     return (
         <>
-            <h1>Pagina DashBoard</h1>
-            {/* <button className="border px-6 py-1 bg-gray-300"
-                onClick={handleClick}>Buscar</button> */}
-            <main className="h-screen w-full flex flex-col gap-4">
-                {
-                    animais.map((animal, index) => (
-                        <button key={index}
-                        className="border px-4 py-1"
-                        >   
-                        {console.log(animal)}
-                            <p>{animal.nome_animal}</p>
-                            <p>{animal.nome_tutor}</p>
-                            <p>{animal.nome_funcionario}</p>
-                        </button>
-                    ))
-                }
-
-            </main>
+            <header className="flex flex-row justify-between items-center px-3 py-2 mb-3">
+                <span className="text-xl text-blue-950 font-bold">Lista de animais cadastrados</span>
+                <button className="bg-blue-700 text-gray-50 font-bold px-4 py-2 rounded-md ml-auto hover:bg-blue-600 transition-colors duration-200 cursor-pointer">Novo animal</button>
+            </header>
+            <table className=" border-collapse border border-gray-300 w-full">
+                <colgroup>
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                </colgroup>
+                <thead>
+                    <tr className="text-left">
+                        <th className="px-2 py-3"><span>Nome Animal:</span></th>
+                        <th className="px-2 py-3"><span>Raça:</span></th>
+                        <th className="px-2 py-3"><span>Espécie:</span></th>
+                        <th className="px-2 py-3"><span>Idade:</span></th>
+                        <th className="px-2 py-3"><span>Peso:</span></th>
+                        <th className="px-2 py-3"><span>Nome Tutor:</span></th>
+                        <th className="px-2 py-3"><span>Alterar:</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        animais.map((animal, index) => (
+                            <tr key={index}
+                                className="h-12.5 py-2 text-blue-950 border-t border-gray-300 hover:bg-blue-600 hover:text-gray-50 transition-colors duration-200 cursor-pointer"
+                            >
+                                {console.log(animal)}
+                                <td className="px-2 py-2">
+                                    <span className="text-base font-medium text-current">{animal.nome_animal}</span>
+                                </td>
+                                <td className="px-2 py-2">
+                                    <span className="text-base font-medium text-current">{animal.raca}</span>
+                                </td>
+                                <td className="px-2 py-2">
+                                    <span className="text-base font-medium text-current">{animal.especie}</span>
+                                </td>
+                                <td className="px-2 py-2">
+                                    <span className="text-base font-medium text-current">{animal.idade} anos</span>
+                                </td>
+                                <td className="px-2 py-2">
+                                    <span className="text-base font-medium text-current">{animal.peso}Kg</span>
+                                </td>
+                                <td className="px-2 py-2">
+                                    <span className="text-base font-medium text-current">{animal.tutor}</span>
+                                </td>
+                                <td className="px-2 py-2">
+                                    <button>
+                                        <span className="text-base font-medium text-current">
+                                            Editar</span>
+                                    </button>
+                                </td>
+                            </tr>
+                        ))
+                    }
+                </tbody>
+            </table>
         </>
     )
 }
