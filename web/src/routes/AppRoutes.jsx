@@ -23,11 +23,11 @@ export const router = createBrowserRouter([
                 path: "home", Component: Home,
                 children: [
                     { index: true, Component: Dashboard},
-                    { path:"caes-register", Component: CaesRegister},
-                    { path:"cat-register", Component: CatRegister},
+                    { path:"caes", Component: CaesRegister},
+                    { path:"gatos", Component: CatRegister},
                     { path:"cadastro", Component: Cadastros},
                     { path:"castrados", Component: Castrados},
-                    { path:"fila-de-espera", Component: Espera},
+                    { path:"filaespera", Component: Espera},
                     { path: "about", Component: About },
                 ]
             },
