@@ -1,12 +1,7 @@
 <?php
 
-
-require_once("./class/Data.php");
-// 1. Configuração de CORS (Obrigatório para o fetch funcionar do seu frontend)
-// Permite qualquer origem (em produção, substitua pelo seu domínio)
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: POST");
-header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+require_once("./headers.php");
+require_once("./class/DB.php");
 
 // $input = file_get_contents('php://input');
 // $usuario = json_decode($input, true);
@@ -16,7 +11,7 @@ $mysqlhost = "mysql:host=localhost;";
 $porta = "port=3306;";
 $dbname = "dbname=zoonoses_db;";
 $dados = $mysqlhost . $porta . $dbname;
-$db = new Data($dados, "root", "root");
+$db = new DB($dados, "root", "root");
 
 $conexao = null;
 // Por haver possibilidade de dar erro usamos o try catch
