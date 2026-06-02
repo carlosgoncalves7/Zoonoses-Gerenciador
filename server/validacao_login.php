@@ -15,16 +15,44 @@ $usuario = json_decode($input, true);
 //     exit();
 // }
 // Data Source Name (Nome da Fonte de Dados)
+
 $DSN = $DB_HOST . $DB_PORT . $DB_NAME;
 
-$email = $usuario['email'] ?? 'ana.ribeiro@empresa.com';
-$senha = $usuario['senha'] ?? '123456';
+$email = $usuario['email'] ?? '';
+$senha = $usuario['senha'] ?? '';
 
 $db = new DB($DSN, $DB_USER, $DB_PASS);
-$user = new Login($db, $email, $senha);
-$response = $user->validar();
-var_dump($response);
-exit();
+// var_dump($db);
+$user = new Login($db->getPDO(), $email, $senha);
+
+if ($user->validar()) {
+
+    $banco = $db->getPDO();
+    
+    $sql = "SELECT email, senha FROM funcionarios WHERE email = :email AND senha = :senha";
+    $cmd = $banco->prepare($sql);
+    $cmd->bindValue(":email", $email, PDO::PARAM_STR);
+    $cmd->bindValue(":senha", $senha, PDO::PARAM_STR);
+    $cmd->execute();
+
+    $response = $cmd->fetch(PDO::FETCH_ASSOC);
+    // //empty - verifica se esta variavel esta vazia ou não
+// //verdadeiro - se estiver vazia 
+// //falso - se estiver preenchida
+
+    if (!empty($response)) {
+        echo json_encode([
+            "authentication" => true,
+            "user" => $response
+        ]);
+    }
+}
+else {
+    echo json_encode([
+        "authentication" => false,
+        "message" => "Usuário não existe"
+    ]);
+}
 
 // Por haver possibilidade de dar erro usamos o try catch
 // try {
@@ -39,25 +67,3 @@ exit();
 //     $msg = "Error : " . $e->getMessage();
 //     file_put_contents("generico.log", $msg, FILE_APPEND);
 // }
-
-
-// $sql = "SELECT email, senha FROM funcionarios WHERE email = :email AND senha = :senha";
-// $cmd = $db->prepare($sql);
-// $cmd->bindValue(":email", $email, PDO::PARAM_STR);
-// $cmd->bindValue(":senha", $senha, PDO::PARAM_STR);
-// $cmd->execute();
-
-// $response = $cmd->fetch(PDO::FETCH_ASSOC);
-// //empty - verifica se esta variavel esta vazia ou não
-// //verdadeiro - se estiver vazia 
-// //falso - se estiver preenchida
-
-
-$status = ["authentication" => true];
-
-if (!empty($response)) {
-    echo json_encode([
-        "authentication" => true,
-        "user" => $response
-    ]);
-}
