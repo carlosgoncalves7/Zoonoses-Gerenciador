@@ -6,8 +6,6 @@ CREATE database zoonoses_db;
 /*
 CONECTANDO AO BANCO
 */
-use zoonoses_db;
-
 -- =============
 -- TABELAS BASE
 CREATE TABLE admin (
@@ -24,15 +22,17 @@ CREATE TABLE funcionarios (
     senha varchar(100) NOT NULL
 );
 
-CREATE TABLE medicos_vet (
-	crmv integer PRIMARY KEY NOT NULL,
-	id_medico integer NOT NULL,
-	nome varchar(255),
+CREATE TABLE veterinarios (
+	id_veterinario integer PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    crmv integer  NOT NULL,
+	nome varchar(255) NOT NULL,
 	email varchar(255)
 );
 
-CREATE TABLE tutor (
-  id_tutor int PRIMARY KEY NOT NULL,
+ALTER TABLE veterinarios modify id_veterinario INT NOT NULL AUTO_INCREMENT;
+
+CREATE TABLE tutores (
+  id_tutor int PRIMARY KEY auto_increment NOT NULL,
   nome varchar(255),
   endereco varchar(255),
   cpf varchar(255),
@@ -41,57 +41,55 @@ CREATE TABLE tutor (
   email varchar(255),
   id_funcionario_cadastro int NOT NULL
 );
--- corrigindo nome de tutores
-ALTER TABLE tutor
-	RENAME TO tutores;
 
 -- Criar chave estrangeira do funcionario que cadastra
-ALTER TABLE tutor ADD foreign key (id_funcionario_cadastro)
+ALTER TABLE tutores ADD foreign key (id_funcionario_cadastro)
 	references funcionarios (id_funcionario);
 
-CREATE TABLE animal (
+CREATE TABLE animais (
   id_animal int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   nome varchar(255) NOT NULL,
   especie varchar(255),
-  raça varchar(255),
+  raca varchar(255),
   idade int,
   peso double,
   cor varchar(255) NOT NULL,
+  sexo varchar(20) NOT NULL,
   id_tutor int,
   id_funcionario_cadastro int NOT NULL
 );
-ALTER TABLE animal RENAME TO animais;
-
-ALTER TABLE animais MODIFY COLUMN id_tutor int;
 -- alterando nome da coluna
-ALTER TABLE animais RENAME COLUMN raça TO raca;
 -- Criando chave estrangeira do tutor e do funcionario que cadastra
 ALTER TABLE animais ADD foreign key (id_tutor)
-	references tutor (id_tutor);
+	references tutores (id_tutor);
 
 ALTER TABLE animais ADD foreign key (id_funcionario_cadastro)
 	references funcionarios (id_funcionario);
     
-CREATE TABLE procedimento (
+CREATE TABLE procedimentos (
   id_procedimento int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   nome varchar(255) NOT NULL,
   descricao varchar(255),
-  crmv_medico int NOT NULL,
+  data_procedimento varchar(40) NOT NULL DEFAULT '2026-06-02',
+  id_veterinario int NOT NULL,
   id_tutor int NOT NULL,
   id_animal int NOT NULL
-  -- FOREIGN KEY (crmv_medico) REFERENCES medicos_vet(crmv)
 );
-
-ALTER TABLE procedimento RENAME TO procedimentos;
+select * from procedimentos;
+select * from medicos_vet;
+-- ALTER TABLE procedimento RENAME TO procedimentos;
 
 -- uma coluna estrangeira so pode ser adicionado quando a mesma e primary key ou unique na sua table original
 -- Criando chave estrangeira medico, tutor e animal
-ALTER TABLE procedimento ADD foreign key (crmv_medico)
-	references medicos_vet (crmv);
+ALTER TABLE procedimentos 
+ADD FOREIGN KEY (id_veterinario) 
+REFERENCES veterinarios(id_veterinario);
     
-ALTER TABLE procedimento ADD foreign key (id_tutor)
-	references tutor (id_tutor);
+ALTER TABLE procedimentos 
+ADD foreign key (id_tutor)
+references tutores (id_tutor);
     
-ALTER TABLE procedimento ADD foreign key (id_animal)
-	references animal (id_animal);
+ALTER TABLE procedimentos 
+ADD foreign key (id_animal)
+	references animais (id_animal);
 
