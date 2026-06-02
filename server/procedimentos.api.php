@@ -4,29 +4,31 @@ require_once("./headers.php");
 require_once("./config.database.php");
 require_once("./class/DB.php");
 
-// $input = file_get_contents('php://input');
-// $usuario = json_decode($input, true);
 $DSN = $DB_HOST . $DB_PORT . $DB_NAME;
 $db = new DB($DSN, $DB_USER, $DB_PASS);
 
 $cmd = $db->getPDO();
 
 $sql = "SELECT 
-a.*,
--- a.nome AS nome_animal,
--- a.especie, a.raca, a.idade, a.peso, a.cor,
+a.nome,
+a.especie,
+a.sexo,
 t.nome AS tutor,
-f.nome AS funcionario
+p.id_procedimento,
+p.nome AS nome_procedimento,
+p.data_procedimento AS data,
+p.descricao,
+v.nome AS veterinario
 FROM animais a
-	LEFT JOIN tutores t
-	ON a.id_tutor = t.id_tutor
-	LEFT JOIN funcionarios f
-	ON a.id_funcionario_cadastro = f.id_funcionario
-    where especie = 'Cachorro'";
+	INNER JOIN tutores t
+		ON a.id_tutor = t.id_tutor
+    INNER JOIN procedimentos p
+		ON t.id_tutor = p.id_tutor
+	INNER JOIN veterinarios v
+		ON p.id_veterinario = v.id_veterinario;";
 
 $stm = $cmd->prepare($sql);
 $stm->execute();
-
 $response = $stm->fetchAll(PDO::FETCH_ASSOC);
 
 // empty - verifica se esta variavel esta vazia ou não
