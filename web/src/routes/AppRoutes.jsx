@@ -7,6 +7,7 @@ import Login from "../pages/Login";
 import CaesRegister from "../pages/CaesRegister"
 import CatRegister from "../pages/CatRegister"
 import Cadastros from "../pages/Cadastros";
+import Procedimentos from "../pages/Procedimentos";
 import Castrados from "../pages/Castrados";
 import Espera from "../pages/Espera";
 import Dashboard from "../pages/Dashboard";
@@ -25,6 +26,7 @@ export const router = createBrowserRouter([
                     { index: true, Component: Dashboard},
                     { path:"caes", Component: CaesRegister},
                     { path:"gatos", Component: CatRegister},
+                    { path:"procedimentos", Component: Procedimentos},
                     { path:"cadastro", Component: Cadastros},
                     { path:"castrados", Component: Castrados},
                     { path:"filaespera", Component: Espera},
