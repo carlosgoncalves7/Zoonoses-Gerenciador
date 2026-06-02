@@ -6,14 +6,14 @@ export default function Nav() {
 
     return (
         <nav className="flex flex-col gap-5 ">
-            <Link href="/home">
-                Dashboard
-            </Link>
             <Link href="caes" svg={<Dog />}>
                 Registro de Cães
             </Link>
             <Link href="gatos" svg={<Cat />}>
                 Registro de Gatos
+            </Link>
+            <Link href="procedimentos" svg={<Book />}>
+                Procedimentos
             </Link>
             <Link href="cadastro" svg={<Book />}>
                 Consultar Cadastro
