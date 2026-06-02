@@ -1,19 +1,19 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function Dashboard() {
+export default function Procedimentos() {
 
-    const [animais, setAnimais] = useState([])
+    const [procedimentos, setProcedimentos] = useState([])
 
     const fetchData = async () => {
         try {
-            const response = await axios.get("http://localhost:8000/animal.api.php")
+            const response = await axios.get("http://localhost:8000/procedimentos.api.php")
             const data = await response.data;
             if(!data){
-                setAnimais(false);
+                setProcedimentos(false);
                 return;
             }
-            setAnimais(data)
+            setProcedimentos(data)
 
         } catch (error) {
             console.error("Error fetching data:", error);
@@ -23,11 +23,11 @@ export default function Dashboard() {
         fetchData();
     }, [])
 
+
     return (
         <>
             <header className="flex flex-row justify-between items-center px-3 py-2 mb-3">
-                <span className="text-xl text-blue-950 font-bold">Lista de animais cadastrados</span>
-                <button className="bg-blue-700 text-gray-50 font-bold px-4 py-2 rounded-md ml-auto hover:bg-blue-600 transition-colors duration-200 cursor-pointer">Novo animal</button>
+                <span className="text-xl text-blue-950 font-bold">Lista de Procedimentos</span>
             </header>
             <table className=" border-collapse border border-gray-300 w-full">
                 <colgroup>
@@ -37,51 +37,54 @@ export default function Dashboard() {
                     <col />
                     <col />
                     <col />
+                    {/* <col /> */}
                 </colgroup>
                 <thead>
                     <tr className="text-left">
+                        <th className="px-2 py-3"><span>Nome Procedimento:</span></th>
+                        <th className="px-2 py-3"><span>Descrição:</span></th>
                         <th className="px-2 py-3"><span>Nome Animal:</span></th>
-                        <th className="px-2 py-3"><span>Raça:</span></th>
-                        <th className="px-2 py-3"><span>Espécie:</span></th>
-                        <th className="px-2 py-3"><span>Idade:</span></th>
-                        <th className="px-2 py-3"><span>Peso:</span></th>
-                        <th className="px-2 py-3"><span>Nome Tutor:</span></th>
-                        <th className="px-2 py-3"><span>Alterar:</span></th>
+                        <th className="px-2 py-3"><span>Sexo:</span></th>
+                        <th className="px-2 py-3"><span>Veterinario:</span></th>
+                        <th className="px-2 py-3"><span>Data:</span></th>
+                        {/* <th className="px-2 py-3"><span>Alterar:</span></th> */}
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        animais ? animais.map((animal, index) => (
-                            <tr key={index}
+                        procedimentos ? procedimentos.map((proced, index) => (
+                            <tr key={proced.id_procedimento}
                                 className="h-12.5 py-2 text-blue-950 border-t border-gray-300 hover:bg-blue-600 hover:text-gray-50 transition-colors duration-200 cursor-pointer"
                             >
-                                {console.log(animal)}
                                 <td className="px-2 py-2">
-                                    <span className="text-base font-medium text-current">{animal.nome_animal}</span>
+                                    <span className="text-base font-medium text-current">{proced.nome_procedimento}</span>
                                 </td>
                                 <td className="px-2 py-2">
-                                    <span className="text-base font-medium text-current">{animal.raca}</span>
+                                    <span className="text-base font-medium text-current">{proced.descricao}</span>
                                 </td>
                                 <td className="px-2 py-2">
-                                    <span className="text-base font-medium text-current">{animal.especie}</span>
+                                    <span className="text-base font-medium text-current">{proced.nome}</span>
                                 </td>
                                 <td className="px-2 py-2">
-                                    <span className="text-base font-medium text-current">{animal.idade} anos</span>
+                                    <span className="text-base font-medium text-current">{proced.sexo}</span>
                                 </td>
                                 <td className="px-2 py-2">
-                                    <span className="text-base font-medium text-current">{animal.peso}Kg</span>
+                                    <span className="text-base font-medium text-current">{proced.veterinario}</span>
                                 </td>
                                 <td className="px-2 py-2">
-                                    <span className="text-base font-medium text-current">{animal.tutor}</span>
+                                    <span className="text-base font-medium text-current">{proced.data}</span>
                                 </td>
-                                <td className="px-2 py-2">
+                                {/* <td className="px-2 py-2">
+                                    <span className="text-base font-medium text-current">{animal.tutor ? animal.tutor : "N/A"}</span>
+                                </td> */}
+                                {/* <td className="px-2 py-2">
                                     <button>
                                         <span className="text-base font-medium text-current">
                                             Editar</span>
                                     </button>
-                                </td>
+                                </td> */}
                             </tr>
-                        )) : <tr><td colSpan="8" className="text-center py-4 text-gray-500">Nenhum animal cadastrado</td></tr>
+                        )) : <tr><td colSpan="8" className="text-center py-4 text-gray-500">Nenhum procedimento encontrado!</td></tr>
                     }
                 </tbody>
             </table>

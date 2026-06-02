@@ -11,7 +11,10 @@ export default function RegistroCaes() {
         try {
             const response = await axios.get("http://localhost:8000/caes.api.php")
             const data = await response.data;
-
+            if(!data){
+                setCaes(false);
+                return;
+            }
             setCaes(data)
 
         } catch (error) {
@@ -38,26 +41,28 @@ export default function RegistroCaes() {
                     <col />
                     <col />
                     <col />
+                    {/* <col /> */}
                 </colgroup>
                 <thead>
                     <tr className="text-left">
                         <th className="px-2 py-3"><span>Nome Animal:</span></th>
                         <th className="px-2 py-3"><span>Raça:</span></th>
                         <th className="px-2 py-3"><span>Idade:</span></th>
+                        <th className="px-2 py-3"><span>Sexo:</span></th>
                         <th className="px-2 py-3"><span>Peso:</span></th>
                         <th className="px-2 py-3"><span>Nome Tutor:</span></th>
-                        <th className="px-2 py-3"><span>Alterar:</span></th>
+                        {/* <th className="px-2 py-3"><span>Alterar:</span></th> */}
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        caes.map((animal, index) => (
+                       caes ? caes.map((animal, index) => (
                             <tr key={index}
                                 className="h-12.5 py-2 text-blue-950 border-t border-gray-300 hover:bg-blue-600 hover:text-gray-50 transition-colors duration-200 cursor-pointer"
                             >
                                 {console.log(animal)}
                                 <td className="px-2 py-2">
-                                    <span className="text-base font-medium text-current">{animal.nome_animal}</span>
+                                    <span className="text-base font-medium text-current">{animal.nome}</span>
                                 </td>
                                 <td className="px-2 py-2">
                                     <span className="text-base font-medium text-current">{animal.raca}</span>
@@ -66,19 +71,22 @@ export default function RegistroCaes() {
                                     <span className="text-base font-medium text-current">{animal.idade} anos</span>
                                 </td>
                                 <td className="px-2 py-2">
+                                    <span className="text-base font-medium text-current">{animal.sexo}</span>
+                                </td>
+                                <td className="px-2 py-2">
                                     <span className="text-base font-medium text-current">{animal.peso}Kg</span>
                                 </td>
                                 <td className="px-2 py-2">
-                                    <span className="text-base font-medium text-current">{animal.tutor}</span>
+                                    <span className="text-base font-medium text-current">{animal.tutor ? animal.tutor : "N/A"}</span>
                                 </td>
-                                <td className="px-2 py-2">
+                                {/* <td className="px-2 py-2">
                                     <button>
                                         <span className="text-base font-medium text-current">
                                             Editar</span>
                                     </button>
-                                </td>
+                                </td> */}
                             </tr>
-                        ))
+                        )) : <tr><td colSpan="8" className="text-center py-4 text-gray-500">Nenhum cão cadastrado</td></tr>
                     }
                 </tbody>
             </table>
