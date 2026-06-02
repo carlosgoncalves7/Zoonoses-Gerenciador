@@ -6,11 +6,11 @@ class DB
     private $pdo;
 
     // instacia no constructor os dados da conexão com o banco de dados
-    function __construct($data, $dbname, $pass)
+    function __construct($data, $user, $pass)
     {
 
         try {
-            $this->pdo = new PDO($data, $dbname, $pass);
+            $this->pdo = new PDO($data, $user, $pass);
             // configura o pdo pra lançar exceções em casos de erro
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             //echo $conexao->getAttribute(PDO::ATTR_SERVER_INFO);
@@ -24,5 +24,9 @@ class DB
             $msg = "Error : " . $e->getMessage();
             file_put_contents("generico.log", $msg, FILE_APPEND);
         }
+    }
+
+    function getPDO(){
+        return $this->pdo;
     }
 }

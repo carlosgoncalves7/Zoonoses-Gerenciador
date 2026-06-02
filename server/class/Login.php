@@ -1,7 +1,5 @@
 <?php
 
-
-
 class Login
 {
     private $db;
@@ -29,7 +27,7 @@ class Login
         //verdadeiro - se estiver vazia 
         //falso - se estiver preenchida
         if (!empty($res)) {
-            return $res;
+            return true;
         } else {
             return false;
         }
