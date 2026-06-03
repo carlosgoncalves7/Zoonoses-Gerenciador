@@ -1,6 +1,12 @@
 select * from animais;
 select * from veterinarios;
 select * from procedimentos;
+select * from funcionarios;
+select * from tutores;
+select count(*) from animais;
+select count(*) from animais where especie='Cachorro';
+select count(*) from animais where especie='Gato';
+select count(*) from procedimentos;
 
 select 
 a.id_animal,
