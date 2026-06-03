@@ -1,90 +1,69 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function Dashboard() {
+export const ViewsCard = ({title, value,className, ...props}) => {
+    return (
+        <div className={"bg-blue-900 flex flex-col justify-between px-5 py-4 rounded-[10px] hover:bg-blue-800 hover:cursor-pointer transition-colors" + " "+ className}>
+            <span className="inline-block text-xl text-[#FFF] text-[18px] font-medium">{title}</span>
+            <p className="block text-[32px] text-[#FFF] font-bold text-end ">{value}</p>
+        </div>
+    )
+}
 
+export default function Dashboard() {
     const [animais, setAnimais] = useState([])
 
-    const fetchData = async () => {
-        try {
-            const response = await axios.get("http://localhost:8000/animal.api.php")
-            const data = await response.data;
-            if(!data){
-                setAnimais(false);
-                return;
-            }
-            setAnimais(data)
+    // const fetchData = async () => {
+    //     try {
+    //         const response = await axios.get("http://localhost:8000/animal.api.php")
+    //         const data = await response.data;
+    //         if(!data){
+    //             setAnimais(false);
+    //             return;
+    //         }
+    //         setAnimais(data)
 
-        } catch (error) {
-            console.error("Error fetching data:", error);
-        }
-    }
-    useEffect(() => {
-        fetchData();
-    }, [])
+    //     } catch (error) {
+    //         console.error("Error fetching data:", error);
+    //     }
+    // }
+    // useEffect(() => {
+    //     fetchData();
+    // }, [])
 
     return (
         <>
             <header className="flex flex-row justify-between items-center px-3 py-2 mb-3">
-                <span className="text-xl text-blue-950 font-bold">Lista de animais cadastrados</span>
-                <button className="bg-blue-700 text-gray-50 font-bold px-4 py-2 rounded-md ml-auto hover:bg-blue-600 transition-colors duration-200 cursor-pointer">Novo animal</button>
+                <span className="text-[18px] text-blue-950 font-bold">Bem-Vindo ao Book</span>
             </header>
-            <table className=" border-collapse border border-gray-300 w-full">
-                <colgroup>
-                    <col />
-                    <col />
-                    <col />
-                    <col />
-                    <col />
-                    <col />
-                </colgroup>
-                <thead>
-                    <tr className="text-left">
-                        <th className="px-2 py-3"><span>Nome Animal:</span></th>
-                        <th className="px-2 py-3"><span>Raça:</span></th>
-                        <th className="px-2 py-3"><span>Espécie:</span></th>
-                        <th className="px-2 py-3"><span>Idade:</span></th>
-                        <th className="px-2 py-3"><span>Peso:</span></th>
-                        <th className="px-2 py-3"><span>Nome Tutor:</span></th>
-                        <th className="px-2 py-3"><span>Alterar:</span></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        animais ? animais.map((animal, index) => (
-                            <tr key={index}
-                                className="h-12.5 py-2 text-blue-950 border-t border-gray-300 hover:bg-blue-600 hover:text-gray-50 transition-colors duration-200 cursor-pointer"
-                            >
-                                {console.log(animal)}
-                                <td className="px-2 py-2">
-                                    <span className="text-base font-medium text-current">{animal.nome_animal}</span>
-                                </td>
-                                <td className="px-2 py-2">
-                                    <span className="text-base font-medium text-current">{animal.raca}</span>
-                                </td>
-                                <td className="px-2 py-2">
-                                    <span className="text-base font-medium text-current">{animal.especie}</span>
-                                </td>
-                                <td className="px-2 py-2">
-                                    <span className="text-base font-medium text-current">{animal.idade} anos</span>
-                                </td>
-                                <td className="px-2 py-2">
-                                    <span className="text-base font-medium text-current">{animal.peso}Kg</span>
-                                </td>
-                                <td className="px-2 py-2">
-                                    <span className="text-base font-medium text-current">{animal.tutor}</span>
-                                </td>
-                                <td className="px-2 py-2">
-                                    <button>
-                                        <span className="text-base font-medium text-current">
-                                            Editar</span>
-                                    </button>
-                                </td>
-                            </tr>
-                        )) : <tr><td colSpan="8" className="text-center py-4 text-gray-500">Nenhum animal cadastrado</td></tr>
-                    }
-                </tbody>
-            </table>
+            <section>
+
+                <div className="w-[720px] grid grid-cols-12 grid-rows-2 gap-[24px] bg-orange-500">
+
+                    <ViewsCard 
+                    title={"Total de Cães cadastrados"} 
+                    value={24} 
+                    className={"col-span-4"}/>
+                    <ViewsCard 
+                    title={"Total de Gatos cadastrados"} 
+                    value={24} 
+                    className={"col-span-4"}/>
+                    <ViewsCard 
+                    title={"Total de animais cadastrados"} 
+                    value={24} 
+                    className={"col-span-4"}/>
+                    <ViewsCard 
+                    title={"Castrações realizadas"} 
+                    value={24} 
+                    className={"col-span-4"}/>
+                    <ViewsCard 
+                    title={"Procedimentos realizados"} 
+                    value={24} 
+                    className={"col-span-8"}/>
+
+                </div>
+
+            </section>
         </>
     )
 }
