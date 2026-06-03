@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import axios from ''
+import axios from "axios";
 import Input from "./Input"
 
 export default function Form() {
@@ -42,14 +42,23 @@ export default function Form() {
         }))
     }
 
+    const handleForm = async (e) => {
+        e.preventDefault()
+        
+            try {
+                const response = await axios.post("http://localhost:8000/cadastrar.api.php", JSON.stringify(data))
+                const database = await response;
+                console.log(response)
+                console.log(response.data)
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+    }
 
-
-    useEffect(() => {
-        console.log(data)
-    }, [data])
+    const [cadastro, setCadastro] = useState([])
 
     return (
-        <form className="w-full flex flex-col gap-y-6">
+        <form onSubmit={handleForm} className="w-full flex flex-col gap-y-6">
             <div>
                 <h1 className="text-2xl text-blue-950 font-semibold mb-2">Dados Tutor</h1>
                 <div className="w-full grid grid-cols-2 gap-x-4 gap-y-4">
@@ -137,7 +146,7 @@ export default function Form() {
                 </div>
             </div>
             <div className="w-full flex items-center justify-end">
-                <button type="submit" className="w-[300px] bg-blue-700 text-[#FFF] font-semibold px-6 py-4 rounded-lg hover:bg-blue-800 transition-colors hover:cursor-pointer">Enviar</button>
+                <button type="submit" className="w-75 bg-blue-700 text-[#FFF] font-semibold px-6 py-4 rounded-lg hover:bg-blue-800 transition-colors hover:cursor-pointer">Enviar</button>
             </div>
         </form>
     )

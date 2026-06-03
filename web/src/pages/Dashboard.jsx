@@ -38,7 +38,7 @@ export default function Dashboard() {
             </header>
             <section>
 
-                <div className="w-[720px] grid grid-cols-12 grid-rows-2 gap-[24px] bg-orange-500">
+                <div className="w-180 grid grid-cols-12 grid-rows-2 gap-6 bg-orange-500">
 
                     <ViewsCard 
                     title={"Total de Cães cadastrados"} 

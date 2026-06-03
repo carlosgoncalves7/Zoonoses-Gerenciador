@@ -24,7 +24,6 @@ export default function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        console.log(form)
         try {
             const response = await axios.post("http://localhost:8000/validacao_login.php", JSON.stringify(form))
             const data = await response.data;
