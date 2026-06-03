@@ -1,7 +1,10 @@
+
+import Form from "../components/Form/Form";
+
 export default function Cadastros(){
     return(
         <>
-        <h1>Pagina de cadastrados</h1>
+        <Form />
         </>
     )
 }
