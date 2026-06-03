@@ -6,17 +6,20 @@ export default function Nav() {
 
     return (
         <nav className="flex flex-col gap-5 ">
+            <Link href="dashboard" svg={""}>
+                Dashboard
+            </Link>
+            <Link href="cadastro" svg={""}>
+                Registrar Cadastro
+            </Link>
             <Link href="caes" svg={<Dog />}>
-                Registro de Cães
+                Book Cães
             </Link>
             <Link href="gatos" svg={<Cat />}>
-                Registro de Gatos
+                Book Gatos
             </Link>
             <Link href="procedimentos" svg={<Book />}>
                 Procedimentos
-            </Link>
-            <Link href="cadastro" svg={<Book />}>
-                Consultar Cadastro
             </Link>
             <Link href="castrados" svg={<CheckSquare />}>
                 Castrados
