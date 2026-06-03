@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
             {
                 path: "home", Component: Home,
                 children: [
-                    { index: true, Component: Dashboard},
+                    { path: "dashboard", index: true, Component: Dashboard},
                     { path:"caes", Component: CaesRegister},
                     { path:"gatos", Component: CatRegister},
                     { path:"procedimentos", Component: Procedimentos},
