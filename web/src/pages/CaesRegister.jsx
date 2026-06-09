@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Outlet, NavLink } from "react-router"
-import TutorForm from "../components/TutorForm"
 
 export default function RegistroCaes() {
 
@@ -56,7 +55,7 @@ export default function RegistroCaes() {
                 </thead>
                 <tbody>
                     {
-                       caes ? caes.map((animal, index) => (
+                       caes !== undefined ? caes.map((animal, index) => (
                             <tr key={index}
                                 className="h-12.5 py-2 text-blue-950 border-t border-gray-300 hover:bg-blue-600 hover:text-gray-50 transition-colors duration-200 cursor-pointer"
                             >

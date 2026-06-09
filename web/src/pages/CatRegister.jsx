@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Outlet, NavLink } from "react-router"
-import TutorForm from "../components/TutorForm"
+
 
 export default function RegistroCat() {
 
@@ -29,9 +29,9 @@ export default function RegistroCat() {
         <>
             <header className="flex flex-row justify-between items-center px-3 py-2 mb-3">
                 <span className="text-xl text-blue-950 font-bold">Lista de Gatos</span>
-                <button 
+                {/* <button 
                 className="bg-blue-700 text-gray-50 font-bold px-4 py-2 rounded-md ml-auto hover:bg-blue-600 transition-colors duration-200 cursor-pointer">
-                    Novo Gato</button>
+                    Novo Gato</button> */}
             </header>
             <table className=" border-collapse border border-gray-300 w-full">
                 <colgroup>

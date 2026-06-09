@@ -13,6 +13,7 @@ import Espera from "../pages/Espera";
 import Dashboard from "../pages/Dashboard";
 import About from "../pages/About";
 import Error from "../pages/Error";
+import QuemSou from "../pages/QuemSou";
 
 export const router = createBrowserRouter([
     {
@@ -27,6 +28,7 @@ export const router = createBrowserRouter([
                     { path:"caes", Component: CaesRegister},
                     { path:"gatos", Component: CatRegister},
                     { path:"procedimentos", Component: Procedimentos},
+                    { path:"quemsou", Component:QuemSou},
                     { path:"cadastro", Component: Cadastros},
                     { path:"castrados", Component: Castrados},
                     { path:"filaespera", Component: Espera},
