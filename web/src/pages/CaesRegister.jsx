@@ -4,7 +4,7 @@ import { Outlet, NavLink } from "react-router"
 
 export default function RegistroCaes() {
 
-    const [caes, setCaes] = useState([]);
+    const [caes, setCaes] = useState(null);
     const [loading, setLoading] = useState(false);
 
     const fetchData = async () => {
@@ -67,7 +67,6 @@ export default function RegistroCaes() {
                             <tr key={index}
                                 className="h-12.5 py-2 text-blue-950 border-t border-gray-300 hover:bg-blue-600 hover:text-gray-50 transition-colors duration-200 cursor-pointer"
                             >
-                                {console.log(animal)}
                                 <td className="px-2 py-2">
                                     <span className="text-base font-medium text-current">{animal.nome}</span>
                                 </td>

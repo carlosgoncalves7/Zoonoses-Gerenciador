@@ -5,7 +5,7 @@ export default function Error() {
     return (
         <>
             <h1>Foi Mal! Caminho errado!!!!</h1>
-            <NavLink to="/home">Voltar a Home</NavLink>
+            <NavLink to="/home/dashboard">Voltar a Home</NavLink>
         </>
     )
 }

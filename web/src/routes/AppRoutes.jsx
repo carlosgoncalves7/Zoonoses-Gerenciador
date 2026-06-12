@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
                     { path:"caes", Component: CaesRegister},
                     { path:"gatos", Component: CatRegister},
                     { path:"procedimentos", Component: Procedimentos},
-                    { path:"quemsou", Component:QuemSou},
+                    // { path:"quemsou", Component:QuemSou},
                     { path:"cadastro", Component: Cadastros},
                     { path:"castrados", Component: Castrados},
                     { path:"filaespera", Component: Espera},

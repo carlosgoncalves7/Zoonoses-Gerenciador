@@ -3,7 +3,7 @@ import axios from "axios";
 
 export default function Procedimentos() {
 
-    const [procedimentos, setProcedimentos] = useState([])
+    const [procedimentos, setProcedimentos] = useState(null)
 
     const fetchData = async () => {
         try {
@@ -40,7 +40,7 @@ export default function Procedimentos() {
                     {/* <col /> */}
                 </colgroup>
                 <thead>
-                    <tr className="text-left">
+                    <tr className="text-left border border-gray-300">
                         <th className="px-2 py-3"><span>Nome Procedimento:</span></th>
                         <th className="px-2 py-3"><span>Descrição:</span></th>
                         <th className="px-2 py-3"><span>Nome Animal:</span></th>

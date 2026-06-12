@@ -24,9 +24,9 @@ export default function Nav() {
             <Link href="castrados" svg={<CheckSquare />}>
                 Castrados
             </Link>
-            <Link href="quemsou" svg={<CheckSquare />}>
+            {/* <Link href="quemsou" svg={<CheckSquare />}>
                 Quem Sou
-            </Link>
+            </Link> */}
             <Link href="/" svg={<SignOut />}>
                 Sair
             </Link>

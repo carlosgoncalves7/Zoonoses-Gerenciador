@@ -48,9 +48,10 @@ export default function RegistroCat() {
                         <th className="px-2 py-3"><span>Nome Animal:</span></th>
                         <th className="px-2 py-3"><span>Raça:</span></th>
                         <th className="px-2 py-3"><span>Idade:</span></th>
+                        <th className="px-2 py-3"><span>Sexo:</span></th>
                         <th className="px-2 py-3"><span>Peso:</span></th>
                         <th className="px-2 py-3"><span>Nome Tutor:</span></th>
-                        <th className="px-2 py-3"><span>Alterar:</span></th>
+                        {/* <th className="px-2 py-3"><span>Alterar:</span></th> */}
                     </tr>
                 </thead>
                 <tbody>
@@ -59,7 +60,6 @@ export default function RegistroCat() {
                             <tr key={index}
                                 className="h-12.5 py-2 text-blue-950 border-t border-gray-300 hover:bg-blue-600 hover:text-gray-50 transition-colors duration-200 cursor-pointer"
                             >
-                                {console.log(animal)}
                                 <td className="px-2 py-2">
                                     <span className="text-base font-medium text-current">{animal.nome}</span>
                                 </td>
