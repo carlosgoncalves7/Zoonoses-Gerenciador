@@ -7,6 +7,7 @@ import hero from "../assets/hero.png"
 
 export default function Login() {
 
+    const [error, setError] = useState()
     const [data, setData] = useState();
     const [form, setForm] = useState({
         email: "",
@@ -28,10 +29,9 @@ export default function Login() {
             const response = await axios.post("http://localhost:8000/validacao_login.php", JSON.stringify(form))
             const data = await response.data;
 
-            if (data.authentication) {
-                navigate('/home');
+            if (data.auth) {
+                navigate('/home/dashboard');
             }
-
             console.log(data)
         } catch (error) {
             console.error("Error fetching data:", error);
@@ -64,6 +64,7 @@ export default function Login() {
                                 placeholder="insira seu email"
                                 className="bg-[#F9FEFF] h-12.5 w-full pl-2 py-3 pr-4 border-2 border-l-0 border-blue-700 focus:outline-none placeholder:text-blue-800 placeholder:text-[14px] placeholder:font-semibold active:bg-blue-50"
                             />
+                            {/* { error.authentication ?? (<span className="text-[#FF3131] font-medium text-xs">{error.message ? error.message : "Erro de email ou senha"}</span>)} */}
                         </div>
                     </div>
                     <div className="flex flex-col gap-2">

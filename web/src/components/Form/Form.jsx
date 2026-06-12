@@ -44,15 +44,14 @@ export default function Form() {
 
     const handleForm = async (e) => {
         e.preventDefault()
-        
-            try {
-                const response = await axios.post("http://localhost:8000/cadastrar.api.php", JSON.stringify(data))
-                const database = await response;
-                console.log(response)
-                console.log(response.data)
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            }
+        try {
+            const response = await axios.post("http://localhost:8000/cadastrar.api.php", JSON.stringify(data))
+            const database = await response;
+            console.log(response)
+            console.log(response.data)
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
     }
 
     const [cadastro, setCadastro] = useState([])

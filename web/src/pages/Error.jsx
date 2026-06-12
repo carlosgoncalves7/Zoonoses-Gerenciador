@@ -1,11 +1,11 @@
 import { NavLink } from "react-router"
 
-export default function Error(){
+export default function Error() {
 
-    return(
+    return (
         <>
-        <h1>Foi Mal! Caminho errado!!!!</h1>
-        <NavLink to="/home">Voltar a Home</NavLink>
+            <h1>Foi Mal! Caminho errado!!!!</h1>
+            <NavLink to="/home">Voltar a Home</NavLink>
         </>
     )
 }

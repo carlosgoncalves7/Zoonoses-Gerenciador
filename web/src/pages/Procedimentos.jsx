@@ -9,7 +9,7 @@ export default function Procedimentos() {
         try {
             const response = await axios.get("http://localhost:8000/procedimentos.api.php")
             const data = await response.data;
-            if(!data){
+            if (!data) {
                 setProcedimentos(false);
                 return;
             }

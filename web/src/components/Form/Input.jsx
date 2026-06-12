@@ -1,10 +1,10 @@
-export default function Input({ children, label, name, value, onChange, placeholder, type ="text", ...props }) {
+export default function Input({ children, label, name, value, onChange, placeholder, type = "text", ...props }) {
 
     return (
         <div>
             <label htmlFor="email"
                 className=" text-sm font-semibold text-blue-950 mb-2 block">
-            {label}
+                {label}
             </label>
             <input type={type}
                 name={name}

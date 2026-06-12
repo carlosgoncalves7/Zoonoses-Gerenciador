@@ -1,9 +1,9 @@
-export default function Espera(){
+export default function Espera() {
 
     return (
         <>
-        
-        <h1>Fila de espera</h1>
+
+            <h1>Fila de espera</h1>
         </>
     )
 }
