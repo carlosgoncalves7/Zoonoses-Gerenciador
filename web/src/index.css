@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 
 @theme {
+    --inset-shadow-blue: inset 0 -3px 9.7px 0 rgba(0, 172, 204, 0.95);
     --font-sans: 'Manrope', system-ui, -apple-system, sans-serif;
     /* Isso remove todas as cores padrão do tailwind v4 */
     --color-*: initial;
