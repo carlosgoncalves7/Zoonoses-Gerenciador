@@ -8,12 +8,13 @@ require_once("./class/Login.php");
 $input = file_get_contents('php://input');
 $usuario = json_decode($input, true);
 
-// if (empty($usuario)) {
-//     echo json_encode([
-//         "default" => false
-//     ]);
-//     exit();
-// }
+if (empty($usuario)) {
+    echo json_encode([
+        "default" => false,
+        "data" => null
+    ]);
+    exit;
+}
 // Data Source Name (Nome da Fonte de Dados)
 
 $DSN = $DB_HOST . $DB_PORT . $DB_NAME;
@@ -26,30 +27,15 @@ $db = new DB($DSN, $DB_USER, $DB_PASS);
 $user = new Login($db->getPDO(), $email, $senha);
 
 if ($user->validar()) {
-
-    $banco = $db->getPDO();
-    
-    $sql = "SELECT email, senha FROM funcionarios WHERE email = :email AND senha = :senha";
-    $cmd = $banco->prepare($sql);
-    $cmd->bindValue(":email", $email, PDO::PARAM_STR);
-    $cmd->bindValue(":senha", $senha, PDO::PARAM_STR);
-    $cmd->execute();
-
-    $response = $cmd->fetch(PDO::FETCH_ASSOC);
     // //empty - verifica se esta variavel esta vazia ou não
-// //verdadeiro - se estiver vazia 
-// //falso - se estiver preenchida
-
-    if (!empty($response)) {
-        echo json_encode([
-            "authentication" => true,
-            "user" => $response
-        ]);
-    }
-}
-else {
+    // //verdadeiro - se estiver vazia 
+    // //falso - se estiver preenchida
     echo json_encode([
-        "authentication" => false,
+        "auth" => true,
+    ]);
+} else {
+    echo json_encode([
+        "auth" => false,
         "message" => "Usuário não existe"
     ]);
 }
