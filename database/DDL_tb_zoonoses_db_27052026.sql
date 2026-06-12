@@ -24,9 +24,12 @@ CREATE TABLE funcionarios (
 
 CREATE TABLE veterinarios (
 	id_veterinario integer PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    crmv integer  NOT NULL,
+  crmv integer  NOT NULL UNIQUE,
 	nome varchar(255) NOT NULL,
 	email varchar(255)
+
+  -- CONSTRAINT uq_vet_email UNIQUE (email)
+  -- CONSTRAINT uq_crmv UNIQUE (crmv)
 );
 
 ALTER TABLE veterinarios modify id_veterinario INT NOT NULL AUTO_INCREMENT;
@@ -35,11 +38,21 @@ CREATE TABLE tutores (
   id_tutor int PRIMARY KEY auto_increment NOT NULL,
   nome varchar(255),
   endereco varchar(255),
-  cpf varchar(255),
-  rg varchar(255),
+  cpf varchar(255) UNIQUE,
+  rg varchar(255) UNIQUE,
   telefone varchar(255),
-  email varchar(255),
-  id_funcionario_cadastro int NOT NULL
+  email varchar(255) UNIQUE,
+  id_funcionario_cadastro int NOT NULL,
+
+  -- criando um nome pra regra constraint e definindo a coluna como unica
+  -- como uma regra declarada com nome ex: [uq_cpf] quando alguem tentar registrar
+  -- insert por exemplo, o banco vai responder com um erro de
+  -- com a regra possuindo um nome, ele vai exibir direto o nome da coluna que ja possuia o 
+  -- valor que tentou inserir, fica mais facil de descobrir a coluna, se nao o banco responde 
+  -- com um nome aleatório
+  CONSTRAINT uq_cpf UNIQUE (cpf),
+  CONSTRAINT uq_rg UNIQUE (rg),
+  CONSTRAINT uq_email UNIQUE (email)
 );
 
 -- Criar chave estrangeira do funcionario que cadastra
@@ -75,10 +88,8 @@ CREATE TABLE procedimentos (
   id_tutor int NOT NULL,
   id_animal int NOT NULL
 );
-select * from procedimentos;
-select * from medicos_vet;
--- ALTER TABLE procedimento RENAME TO procedimentos;
 
+-- ALTER TABLE procedimento RENAME TO procedimentos;
 -- uma coluna estrangeira so pode ser adicionado quando a mesma e primary key ou unique na sua table original
 -- Criando chave estrangeira medico, tutor e animal
 ALTER TABLE procedimentos 

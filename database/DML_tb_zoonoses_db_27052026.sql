@@ -1,17 +1,4 @@
 -- DML - DATA MANIPULATION LANGUAGE- INSERT, UPDATE E DELETE
-SELECT * FROM funcionarios;
-
-SELECT 
-a.nome AS nome_animal,
-a.especie, a.raca, a.idade, a.peso, a.cor,
-t.nome AS nome_tutor,
-f.nome AS nome_funcionario
-FROM animais a
-	INNER JOIN tutores t
-	ON a.id_tutor = t.id_tutor
-	INNER JOIN funcionarios f
-	ON a.id_funcionario_cadastro = f.id_funcionario;
-
 
 -- Inserindo dados nas tabelas
 INSERT INTO funcionarios (nome,email,senha) VALUES
@@ -20,51 +7,42 @@ INSERT INTO funcionarios (nome,email,senha) VALUES
 ('Fernanda Costa Lima', 'fernanda.lima@empresa.com', 'admin789');
 
 INSERT INTO tutores (nome,endereco,cpf,rg,telefone,email,id_funcionario_cadastro)
-	VALUES
-	('Carlos Eduardo Silva', 'Rua das Palmeiras, 120 - São Paulo/SP', '123.456.789-01', '12.345.678-9', '(11) 99999-1001', 'carlos.silva@email.com', 1),
-	('Mariana Oliveira Souza', 'Av. Brasil, 450 - Campinas/SP', '234.567.890-12', '23.456.789-0', '(19) 98888-2002', 'mariana.souza@email.com', 2),
-	('Fernando Lima Costa', 'Rua XV de Novembro, 78 - Santos/SP', '345.678.901-23', '34.567.890-1', '(13) 97777-3003', 'fernando.costa@email.com', 1),
-	('Juliana Pereira Alves', 'Rua Central, 890 - Sorocaba/SP', '456.789.012-34', '45.678.901-2', '(15) 96666-4004', 'juliana.alves@email.com', 3),
-	('Ricardo Mendes Rocha', 'Av. Independência, 321 - Ribeirão Preto/SP', '567.890.123-45', '56.789.012-3', '(16) 95555-5005', 'ricardo.rocha@email.com', 2),
-	('Patrícia Gomes Ferreira', 'Rua Aurora, 654 - São José dos Campos/SP', '678.901.234-56', '67.890.123-4', '(12) 94444-6006', 'patricia.ferreira@email.com', 1),
-	('André Luiz Martins', 'Av. Paulista, 1500 - São Paulo/SP', '789.012.345-67', '78.901.234-5', '(11) 93333-7007', 'andre.martins@email.com', 1),
-	('Camila Rodrigues Melo', 'Rua do Comércio, 44 - Guarulhos/SP', '890.123.456-78', '89.012.345-6', '(11) 92222-8008', 'camila.melo@email.com', 3),
-	('Lucas Henrique Barros', 'Rua Bela Vista, 700 - Osasco/SP', '901.234.567-89', '90.123.456-7', '(11) 91111-9009', 'lucas.barros@email.com', 2),
-	('Beatriz Fernandes Lopes', 'Av. Europa, 980 - Santo André/SP', '012.345.678-90', '01.234.567-8', '(11) 90000-1010', 'beatriz.lopes@email.com', 1);
-    
-    
-INSERT INTO tutores (nome, endereco, cpf, rg, telefone, email, id_funcionario_cadastro) 
-VALUES
-('Ana Silva', 'Rua das Flores, 123 - Centro', '111.222.333-44', '12.345.678-9', '(11) 98765-4321', 'ana.silva@email.com', 2),
-('Carlos Oliveira', 'Av. Paulista, 1000 - Bela Vista', '222.333.444-55', '23.456.789-0', '(11) 91234-5678', 'carlos.oliveira@email.com', 3),
-('Mariana Costa', 'Rua Augusta, 500 - Consolação', '333.444.555-66', '34.567.890-1', '(11) 99876-5432', 'mariana.costa@email.com', 1),
-('João Pereira', 'Praça da Sé, s/n - Centro', '444.555.666-77', '45.678.901-2', '(11) 97654-3210', 'joao.pereira@email.com', 1),
-('Beatriz Souza', 'Rua Oscar Freire, 200 - Jardins', '555.666.777-88', '56.789.012-3', '(11) 96543-2109', 'beatriz.souza@email.com', 3);
-
-INSERT INTO tutores (nome, endereco, cpf, rg, telefone, email, id_funcionario_cadastro) 
-VALUES
--- Próximos 20 tutores
-('Lucas Santos', 'Av. Brasil, 456 - Jd. Paulista', '123.456.789-00', '12.345.678-0', '(11) 92345-6789', 'lucas.santos@email.com', 1),
-('Camila Rodrigues', 'Rua Voluntários da Pátria, 789 - Santana', '234.567.890-11', '23.456.789-1', '(11) 93456-7890', 'camila.rod@email.com', 2),
-('Rafael Almeida', 'Av. Rebouças, 1200 - Pinheiros', '345.678.901-22', '34.567.890-2', '(11) 94567-8901', 'rafael.almeida@email.com', 3),
-('Amanda Lima', 'Rua Domingos de Morais, 300 - Vila Mariana', '456.789.012-33', '45.678.901-3', '(11) 95678-9012', 'amanda.lima@email.com', 3),
-('Diego Ribeiro', 'Av. Ipiranga, 850 - República', '567.890.123-44', '56.789.012-4', '(11) 96789-0123', 'diego.ribeiro@email.com', 1),
-('Larissa Carvalho', 'Rua Pamplona, 410 - Jardim Paulista', '678.901.234-55', '67.789.012-5', '(11) 97890-1234', 'larissa.c@email.com', 2),
-('Rodrigo Gomes', 'Alameda Lorena, 1500 - Cerqueira César', '789.012.345-66', '78.901.234-6', '(11) 98901-2345', 'rodrigo.gomes@email.com', 3),
-('Juliana Martins', 'Av. Brigadeiro Luís Antônio, 2300 - Bela Vista', '890.123.456-77', '89.012.345-7', '(11) 99012-3456', 'juliana.m@email.com', 1),
-('Gabriel Barbosa', 'Rua Clélia, 600 - Lapa', '901.234.567-88', '90.123.456-8', '(11) 91122-3344', 'gabriel.b@email.com', 1),
-('Fernanda Rocha', 'Av. Jabaquara, 1400 - Saúde', '012.345.678-99', '01.234.567-9', '(11) 92233-4455', 'fernanda.rocha@email.com', 2),
-('Bruno Costa', 'Rua Vergueiro, 3000 - Vila Mariana', '135.246.357-11', '11.223.344-5', '(11) 93344-5566', 'bruno.costa@email.com', 3),
-('Letícia Dias', 'Av. Santo Amaro, 4500 - Brooklin', '246.357.468-22', '22.334.455-6', '(11) 94455-6677', 'leticia.dias@email.com', 2),
-('Thiago Mendes', 'Rua Teodoro Sampaio, 800 - Pinheiros', '357.468.579-33', '33.445.566-7', '(11) 95566-7788', 'thiago.m@email.com', 1),
-('Aline Teixeira', 'Av. Vital Brasil, 1100 - Butantã', '468.579.680-44', '44.556.677-8', '(11) 96677-8899', 'aline.t@email.com', 2),
-('Felipe Cardoso', 'Rua Maria Antônia, 250 - Consolação', '579.680.791-55', '55.667.788-9', '(11) 97788-9900', 'felipe.c@email.com', 3),
-('Patrícia Neves', 'Av. Eng. Luís Carlos Berrini, 900 - Brooklin', '680.791.902-66', '66.778.899-0', '(11) 98899-0011', 'patricia.n@email.com', 3),
-('Gustavo Vieira', 'Rua Heitor Penteado, 1300 - Sumaré', '791.902.013-77', '77.889.900-1', '(11) 99900-1122', 'gustavo.v@email.com', 1),
-('Bruna Marques', 'Av. Nova Cantareira, 500 - Tucuruvi', '802.013.124-88', '88.990.011-2', '(11) 91234-4321', 'bruna.m@email.com', 2),
-('Leonardo Souza', 'Rua São Bento, 100 - Centro', '913.124.235-99', '89.012.123-4', '(11) 92345-5432', 'leo.souza@email.com', 3),
-('Vanessa Araujo', 'Av. Cruzeiro do Sul, 2200 - Canindé', '124.235.346-00', '78.901.890-5', '(11) 93456-6543', 'vanessa.a@email.com', 1);
-    
+    VALUES
+    ('Carlos Eduardo Silva', 'Rua das Palmeiras, 120 - São Paulo/SP', '123.456.789-01', '12.345.678-9', '(11) 99999-1001', 'carlos.silva@email.com', 1),
+    ('Mariana Oliveira Souza', 'Av. Brasil, 450 - Campinas/SP', '234.567.890-12', '23.456.789-0', '(19) 98888-2002', 'mariana.souza@email.com', 2),
+    ('Fernando Lima Costa', 'Rua XV de Novembro, 78 - Santos/SP', '345.678.901-23', '34.567.890-1', '(13) 97777-3003', 'fernando.costa@email.com', 1),
+    ('Juliana Pereira Alves', 'Rua Central, 890 - Sorocaba/SP', '456.789.012-34', '45.678.901-2', '(15) 96666-4004', 'juliana.alves@email.com', 3),
+    ('Ricardo Mendes Rocha', 'Av. Independência, 321 - Ribeirão Preto/SP', '567.890.123-45', '56.789.012-3', '(16) 95555-5005', 'ricardo.rocha@email.com', 2),
+    ('Patrícia Gomes Ferreira', 'Rua Aurora, 654 - São José dos Campos/SP', '678.901.234-56', '67.890.123-4', '(12) 94444-6006', 'patricia.ferreira@email.com', 1),
+    ('André Luiz Martins', 'Av. Paulista, 1500 - São Paulo/SP', '789.012.345-67', '78.901.234-5', '(11) 93333-7007', 'andre.martins@email.com', 1),
+    ('Camila Rodrigues Melo', 'Rua do Comércio, 44 - Guarulhos/SP', '890.123.456-78', '89.012.345-6', '(11) 92222-8008', 'camila.melo@email.com', 3),
+    ('Lucas Henrique Barros', 'Rua Bela Vista, 700 - Osasco/SP', '901.234.567-89', '90.123.456-7', '(11) 91111-9009', 'lucas.barros@email.com', 2),
+    ('Beatriz Fernandes Lopes', 'Av. Europa, 980 - Santo André/SP', '012.345.678-90', '01.234.567-8', '(11) 90000-1010', 'beatriz.lopes@email.com', 1),
+    ('Ana Silva', 'Rua das Flores, 123 - Centro', '111.222.333-44', '12.345.010-9', '(11) 98765-4321', 'ana.silva@email.com', 2),
+    ('Carlos Oliveira', 'Av. Paulista, 1000 - Bela Vista', '222.333.444-55', '23.456.011-0', '(11) 91234-5678', 'carlos.oliveira@email.com', 3),
+    ('Mariana Costa', 'Rua Augusta, 500 - Consolação', '333.444.555-66', '34.567.012-1', '(11) 99876-5432', 'mariana.costa@email.com', 1),
+    ('João Pereira', 'Praça da Sé, s/n - Centro', '444.555.666-77', '45.678.013-2', '(11) 97654-3210', 'joao.pereira@email.com', 1),
+    ('Beatriz Souza', 'Rua Oscar Freire, 200 - Jardins', '555.666.777-88', '56.789.014-3', '(11) 96543-2109', 'beatriz.souza@email.com', 3),
+    ('Lucas Santos', 'Av. Brasil, 456 - Jd. Paulista', '123.456.789-00', '12.345.678-0', '(11) 92345-6789', 'lucas.santos@email.com', 1),
+    ('Camila Rodrigues', 'Rua Voluntários da Pátria, 789 - Santana', '234.567.890-11', '23.456.789-1', '(11) 93456-7890', 'camila.rod@email.com', 2),
+    ('Rafael Almeida', 'Av. Rebouças, 1200 - Pinheiros', '345.678.901-22', '34.567.890-2', '(11) 94567-8901', 'rafael.almeida@email.com', 3),
+    ('Amanda Lima', 'Rua Domingos de Morais, 300 - Vila Mariana', '456.789.012-33', '45.678.901-3', '(11) 95678-9012', 'amanda.lima@email.com', 3),
+    ('Diego Ribeiro', 'Av. Ipiranga, 850 - República', '567.890.123-44', '56.789.012-4', '(11) 96789-0123', 'diego.ribeiro@email.com', 1),
+    ('Larissa Carvalho', 'Rua Pamplona, 410 - Jardim Paulista', '678.901.234-55', '67.789.012-5', '(11) 97890-1234', 'larissa.c@email.com', 2),
+    ('Rodrigo Gomes', 'Alameda Lorena, 1500 - Cerqueira César', '789.012.345-66', '78.901.234-6', '(11) 98901-2345', 'rodrigo.gomes@email.com', 3),
+    ('Juliana Martins', 'Av. Brigadeiro Luís Antônio, 2300 - Bela Vista', '890.123.456-77', '89.012.345-7', '(11) 99012-3456', 'juliana.m@email.com', 1),
+    ('Gabriel Barbosa', 'Rua Clélia, 600 - Lapa', '901.234.567-88', '90.123.456-8', '(11) 91122-3344', 'gabriel.b@email.com', 1),
+    ('Fernanda Rocha', 'Av. Jabaquara, 1400 - Saúde', '012.345.678-99', '01.234.567-9', '(11) 92233-4455', 'fernanda.rocha@email.com', 2),
+    ('Bruno Costa', 'Rua Vergueiro, 3000 - Vila Mariana', '135.246.357-11', '11.223.344-5', '(11) 93344-5566', 'bruno.costa@email.com', 3),
+    ('Letícia Dias', 'Av. Santo Amaro, 4500 - Brooklin', '246.357.468-22', '22.334.455-6', '(11) 94455-6677', 'leticia.dias@email.com', 2),
+    ('Thiago Mendes', 'Rua Teodoro Sampaio, 800 - Pinheiros', '357.468.579-33', '33.445.566-7', '(11) 95566-7788', 'thiago.m@email.com', 1),
+    ('Aline Teixeira', 'Av. Vital Brasil, 1100 - Butantã', '468.579.680-44', '44.556.677-8', '(11) 96677-8899', 'aline.t@email.com', 2),
+    ('Felipe Cardoso', 'Rua Maria Antônia, 250 - Consolação', '579.680.791-55', '55.667.788-9', '(11) 97788-9900', 'felipe.c@email.com', 3),
+    ('Patrícia Neves', 'Av. Eng. Luís Carlos Berrini, 900 - Brooklin', '680.791.902-66', '66.778.899-0', '(11) 98899-0011', 'patricia.n@email.com', 3),
+    ('Gustavo Vieira', 'Rua Heitor Penteado, 1300 - Sumaré', '791.902.013-77', '77.889.900-1', '(11) 99900-1122', 'gustavo.v@email.com', 1),
+    ('Bruna Marques', 'Av. Nova Cantareira, 500 - Tucuruvi', '802.013.124-88', '88.990.011-2', '(11) 91234-4321', 'bruna.m@email.com', 2),
+    ('Leonardo Souza', 'Rua São Bento, 100 - Centro', '913.124.235-99', '89.012.123-4', '(11) 92345-5432', 'leo.souza@email.com', 3),
+    ('Vanessa Araujo', 'Av. Cruzeiro do Sul, 2200 - Canindé', '124.235.346-00', '78.901.890-5', '(11) 93456-6543', 'vanessa.a@email.com', 1);
     
 INSERT INTO animais (nome,especie,raca,idade,peso,cor,sexo,id_tutor,id_funcionario_cadastro)
 	VALUES
@@ -77,27 +55,23 @@ INSERT INTO animais (nome,especie,raca,idade,peso,cor,sexo,id_tutor,id_funcionar
 	('Pingo', 'Gato', 'Siamês', 2, 0.3, 'Amarelo', 'Macho', NULL, 3),
 	('Nina', 'Cachorro', 'Poodle', 6, 8.7, 'Branco', 'Fêmea', 6, 1),
 	('Fred', 'Gato', 'SRD', 5, 6.5, 'Cinza Escuro', 'Macho', NULL, 2),
-	('Pandora', 'Cachorro', 'Golden Retriever', 3, 30.2, 'Dourado', 'Fêmea', 7, 3);
+	('Pandora', 'Cachorro', 'Golden Retriever', 3, 30.2, 'Dourado', 'Fêmea', 7, 3),
+	('Rex', 'Cachorro', 'Labrador', 3, 30.50, 'Amarelo', 'Macho', 11, 1),
+	('Luna', 'Gato', 'Siames', 2, 4.20, 'Bege', 'Femea', 14, 1),
+	('Mel', 'Cachorro', 'Poodle', 5, 6.80, 'Branco', 'Femea', 18, 2),
+	('Thor', 'Cachorro', 'Vira-lata', 4, 15.20, 'Caramelo', 'Macho', 22, 1),
+	('Mia', 'Gato', 'Persa', 1, 3.80, 'Cinza', 'Femea', 25, 2),
+	('Bob', 'Cachorro', 'Golden Retriever', 6, 32.00, 'Dourado', 'Macho', 29, 3),
+	('Pipoca', 'Gato', 'Vira-lata', 2, 4.00, 'Preto e Branco', 'Femea', 31, 1),
+	('Fred', 'Cachorro', 'Bulldog', 4, 22.10, 'Marrom', 'Macho', 35, 2),
+	('Nala', 'Gato', 'Angora', 3, 4.50, 'Branco', 'Femea', 12, 1),
+	('Simba', 'Gato', 'Vira-lata', 5, 5.10, 'Laranja', 'Macho', 17, 2),
+	('Meg', 'Cachorro', 'Pinscher', 2, 3.10, 'Preto', 'Femea', 20, 1),
+	('Luke', 'Cachorro', 'Border Collie', 3, 19.50, 'Preto e Branco', 'Macho', 27, 3),
+	('Oliver', 'Gato', 'Maine Coon', 4, 8.50, 'Cinza', 'Macho', 33, 2),
+	('Amora', 'Cachorro', 'Shih Tzu', 1, 4.90, 'Preto e Branco', 'Femea', 15, 1),
+	('Apollo', 'Cachorro', 'Pastor Alemao', 7, 36.40, 'Capote', 'Macho', 24, 2);
     
-INSERT INTO animais (nome, especie, raca, idade, peso, cor, sexo, id_tutor, id_funcionario_cadastro) VALUES
-('Rex', 'Cachorro', 'Labrador', 3, 30.50, 'Amarelo', 'Macho', 11, 1),
-('Luna', 'Gato', 'Siames', 2, 4.20, 'Bege', 'Femea', 14, 1),
-('Mel', 'Cachorro', 'Poodle', 5, 6.80, 'Branco', 'Femea', 18, 2),
-('Thor', 'Cachorro', 'Vira-lata', 4, 15.20, 'Caramelo', 'Macho', 22, 1),
-('Mia', 'Gato', 'Persa', 1, 3.80, 'Cinza', 'Femea', 25, 2),
-('Bob', 'Cachorro', 'Golden Retriever', 6, 32.00, 'Dourado', 'Macho', 29, 3),
-('Pipoca', 'Gato', 'Vira-lata', 2, 4.00, 'Preto e Branco', 'Femea', 31, 1),
-('Fred', 'Cachorro', 'Bulldog', 4, 22.10, 'Marrom', 'Macho', 35, 2),
-('Nala', 'Gato', 'Angora', 3, 4.50, 'Branco', 'Femea', 12, 1),
-('Simba', 'Gato', 'Vira-lata', 5, 5.10, 'Laranja', 'Macho', 17, 2),
-('Meg', 'Cachorro', 'Pinscher', 2, 3.10, 'Preto', 'Femea', 20, 1),
-('Luke', 'Cachorro', 'Border Collie', 3, 19.50, 'Preto e Branco', 'Macho', 27, 3),
-('Oliver', 'Gato', 'Maine Coon', 4, 8.50, 'Cinza', 'Macho', 33, 2),
-('Amora', 'Cachorro', 'Shih Tzu', 1, 4.90, 'Preto e Branco', 'Femea', 15, 1),
-('Apollo', 'Cachorro', 'Pastor Alemao', 7, 36.40, 'Capote', 'Macho', 24, 2);
-    
-    
-
 
 -- INSERT DE VETERINARIOS
 INSERT INTO veterinarios (crmv, nome, email) VALUES
