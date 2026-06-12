@@ -14,6 +14,7 @@ export default function Form() {
         animal: {
             animalName: "",
             especie: "",
+            peso: "",
             raca: "",
             cor: "",
             idade: "",
@@ -44,6 +45,7 @@ export default function Form() {
 
     const handleForm = async (e) => {
         e.preventDefault()
+        console.log(data);
         try {
             const response = await axios.post("http://localhost:8000/cadastrar.api.php", JSON.stringify(data))
             const database = await response;
@@ -53,7 +55,7 @@ export default function Form() {
             console.error("Error fetching data:", error);
         }
     }
-
+    
     const [cadastro, setCadastro] = useState([])
 
     return (
@@ -90,11 +92,11 @@ export default function Form() {
                         value={data.animal.animalName} onChange={handleAnimal}
                         placeholder={"nome do animal"} />
 
-                    {/* <Input label={"Espécie:"} name={"especie"}
+                    <Input label={"Espécie:"} name={"especie"}
                         value={data.animal.name} onChange={handleAnimal}
-                        placeholder={"espécie do animal"} /> */}
+                        placeholder={"espécie do animal"} />
 
-                    <div className="flex flex-col">
+                    {/* <div className="flex flex-col">
                         <label
                             className="text-sm font-semibold text-blue-950 mb-2 block">
                             Espécie:
@@ -109,9 +111,10 @@ export default function Form() {
                             <option value="Cachorro">Cachorro</option>
                             <option value="Gato">Gato</option>
                         </select>
-                    </div>
+                    </div> */}
 
-
+                    <Input label={"Peso:"} name={"peso"} placeholder={"peso do animal"}
+                        value={data.animal.peso} onChange={handleAnimal} />
                     <Input label={"Raça:"} name={"raca"} placeholder={"raça do animal"}
                         value={data.animal.raca} onChange={handleAnimal} />
 
@@ -122,7 +125,10 @@ export default function Form() {
                     <Input label={"Idade:"} name={"idade"} placeholder={"idade do animal"}
                         value={data.animal.idade} onChange={handleAnimal} />
 
-                    <div className="flex flex-col">
+                    <Input label={"Sexo:"} name={"sexo"} placeholder={"Ex: Macho..."}
+                        value={data.animal.sexo} onChange={handleAnimal} />
+
+                    {/* <div className="flex flex-col">
                         <label
                             className="text-sm font-semibold text-blue-950 mb-2 block">
                             Sexo:
@@ -137,7 +143,7 @@ export default function Form() {
                             <option value="Macho">Macho</option>
                             <option value="Fêmea">Fêmea</option>
                         </select>
-                    </div>
+                    </div> */}
 
                     {/* <Input label={"Sexo:"} name={"sexo"} placeholder={"macho ou Fêmea"}
                         value={data.animal.sexo} onChange={handleAnimal} /> */}
