@@ -1,0 +1,16 @@
+{
+    "name": "Carlos Alessandro Ferreira Gonçalves",
+    "cpf": "111.111.111-00",
+    "rg": "11.111.111-00",
+    "email": "carlos.teste@gmail.com",
+    "telefone": "18 99199-0099",
+    "endereco": "Rua fita cacete com limão, N° 007 - Jardim Imaginario",
+    "animal": {
+        "animalName": "Sol",
+        "especie": "Cachorro",
+        "raca": "SRD",
+        "cor": "amarelo",
+        "idade": "6",
+        "sexo": "Fêmea"
+    }
+}
