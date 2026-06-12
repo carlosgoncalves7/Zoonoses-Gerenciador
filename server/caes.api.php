@@ -22,7 +22,8 @@ FROM animais a
 	ON a.id_tutor = t.id_tutor
 	LEFT JOIN funcionarios f
 	ON a.id_funcionario_cadastro = f.id_funcionario
-    where especie = 'Cachorro'";
+    where especie = 'Cachorro'
+    ORDER BY id_animal DESC";
 
 $stm = $cmd->prepare($sql);
 $stm->execute();

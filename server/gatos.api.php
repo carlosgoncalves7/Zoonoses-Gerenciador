@@ -21,7 +21,8 @@ $sql = "SELECT
 	            ON a.id_tutor = t.id_tutor
 	        LEFT JOIN funcionarios f
 	            ON a.id_funcionario_cadastro = f.id_funcionario
-            WHERE especie = 'Gato'";
+            WHERE especie = 'Gato'
+            ORDER BY id_animal DESC";
 
 
 $stm = $cmd->prepare($sql);
