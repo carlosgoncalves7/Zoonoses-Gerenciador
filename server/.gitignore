@@ -1,2 +1,8 @@
-.venv
+
+
+# Arquivos de ambiente e credenciais
+.env
+.env.local
+.env.backup
+.env.*.local
 .venv.example
