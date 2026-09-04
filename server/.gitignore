@@ -5,4 +5,4 @@
 .env.local
 .env.backup
 .env.*.local
-.venv.example
+.env.example
