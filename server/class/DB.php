@@ -2,31 +2,39 @@
 
 class DB
 {
-
-    private $pdo;
+    private $conexao;
 
     // instacia no constructor os dados da conexão com o banco de dados
-    function __construct($data, $user, $pass)
+    function __construct()
     {
+        $host = getenv("DB_HOST");
+        $dbname = getenv("DB_NAME");
+        $port = getenv("DB_PORT");
+        $user = getenv("DB_USER");
+        $pass = getenv("DB_PASS");
+
 
         try {
-            $this->pdo = new PDO($data, $user, $pass);
-            // configura o pdo pra lançar exceções em casos de erro
-            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            //echo $conexao->getAttribute(PDO::ATTR_SERVER_INFO);
+            $dsn = "mysql:host=$host;port=$port;dbname=$dbname";
+            $this->conexao = new PDO($dsn, $user, $pass);
+            //echo "Connected\n";
+            $this->conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // configura o pdo pra lançar exceções em casos de erro
+            //echo $this->pdo->getAttribute(PDO::ATTR_SERVER_INFO);
 
         } catch (PDOException $e) {
             
-            $msg = "Erro de Banco de Dados " . $e->getMessage();
-            file_put_contents("error.log", $msg, FILE_APPEND);
-            
+            $msg = "Falha na conexão com o banco de dados: " . $e->getMessage();
+            //file_put_contents("error.log", $msg, FILE_APPEND);
+            echo $msg;
+
         } catch (Exception $e) {
-            $msg = "Error : " . $e->getMessage();
-            file_put_contents("generico.log", $msg, FILE_APPEND);
+            $msg = "Não foi possivel conectar: " . $e->getMessage();
+            //file_put_contents("generico.log", $msg, FILE_APPEND);
+            echo $msg;
         }
     }
 
-    function getPDO(){
-        return $this->pdo;
+    public function getConexao(){
+        return $this->conexao;
     }
 }
