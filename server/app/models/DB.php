@@ -15,8 +15,8 @@ class DB
 
 
         try {
-            $dsn = "mysql:host=$host;port=$port;dbname=$dbname";
-            $this->conexao = new PDO($dsn, $user, $pass);
+            $dsn = "mysql:host=$host;port=$port;dbname=zoonoses_db";
+            $this->conexao = new PDO($dsn, "root", "root");
             //echo "Connected\n";
             $this->conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // configura o pdo pra lançar exceções em casos de erro
             //echo $this->pdo->getAttribute(PDO::ATTR_SERVER_INFO);
