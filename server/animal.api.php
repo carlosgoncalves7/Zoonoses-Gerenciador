@@ -1,7 +1,6 @@
 <?php
 
 require_once("./headers.php");
-require_once("./config.database.php");
 require_once("./class/DB.php");
 
 // $input = file_get_contents('php://input');
